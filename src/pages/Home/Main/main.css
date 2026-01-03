@@ -1,0 +1,238 @@
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  gap: 80px;
+}
+
+.hero-image img {
+  width: 650px;
+  height: auto;
+  outline: none;
+  display: block;
+}
+
+.hero-text {
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #000000;
+}
+
+/* Tablet/Laptop Media Queries */
+@media (max-width: 1200px) {
+  .hero-container {
+    padding: 80px 60px;
+    gap: 60px;
+  }
+  
+  .hero-image img {
+    width: 550px;
+  }
+  
+  .hero-text h1 {
+    font-size: 42px;
+    margin-bottom: 50px;
+  }
+  
+  .hero-text p {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+    padding: 60px 40px;
+    gap: 50px;
+  }
+  
+  .hero-image img {
+    width: 450px;
+  }
+  
+  .hero-text h1 {
+    font-size: 38px;
+    margin-bottom: 40px;
+  }
+  
+  .hero-text p {
+    font-size: 16.5px;
+  }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    padding: 50px 30px;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .hero-text {
+    max-width: 100%;
+  }
+  
+  .hero-text h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .hero-text p {
+    font-size: 16px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 576px) {
+  .hero-container {
+    padding: 40px 20px;
+    gap: 30px;
+  }
+  
+  .hero-image img {
+    max-width: 400px;
+  }
+  
+  .hero-text h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+  }
+  
+  .hero-text p {
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 400px) {
+  .hero-container {
+    padding: 30px 15px;
+    gap: 25px;
+  }
+  
+  .hero-image img {
+    max-width: 320px;
+  }
+  
+  .hero-text h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-text p {
+    font-size: 15px;
+  }
+}
+
+/* For very large screens */
+@media (min-width: 1600px) {
+  .hero-container {
+    padding: 120px;
+    gap: 100px;
+  }
+  
+  .hero-image img {
+    width: 750px;
+  }
+  
+  .hero-text h1 {
+    font-size: 56px;
+    margin-bottom: 70px;
+  }
+  
+  .hero-text p {
+    font-size: 20px;
+  }
+}
+
+/* For ultra-wide screens */
+@media (min-width: 2000px) {
+  .hero-container {
+    padding: 150px;
+    gap: 120px;
+  }
+  
+  .hero-image img {
+    width: 850px;
+  }
+  
+  .hero-text h1 {
+    font-size: 64px;
+    margin-bottom: 80px;
+  }
+  
+  .hero-text p {
+    font-size: 22px;
+  }
+}
+
+/* Orientation-specific adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero-container {
+    padding: 50px 40px;
+    gap: 40px;
+  }
+  
+  .hero-image img {
+    width: 400px;
+  }
+  
+  .hero-text h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+  }
+  
+  .hero-text p {
+    font-size: 16px;
+  }
+}
+
+/* High DPI screens */
+@media (min-resolution: 192dpi) {
+  .hero-image img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Print styles */
+@media print {
+  .hero-container {
+    padding: 50px;
+    gap: 40px;
+  }
+  
+  .hero-image img {
+    width: 400px;
+  }
+  
+  .hero-text h1 {
+    font-size: 32px;
+    color: #000000;
+  }
+  
+  .hero-text p {
+    font-size: 14px;
+    color: #333333;
+  }
+}

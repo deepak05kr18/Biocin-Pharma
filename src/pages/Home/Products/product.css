@@ -1,0 +1,502 @@
+.section-container {
+    padding: 20px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: #f7f8fa;
+    color: #111;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .section-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 6px;
+  }
+
+  /* ---------- Updated layout: keep all items in a single horizontal row ---------- */
+
+  .section-items {
+    display: grid;
+    grid-auto-flow: column;                     /* force horizontal flow (no wrapping) */
+    grid-auto-columns: minmax(250px, 1fr);      /* each item gets at least 250px, grows */
+    gap: 40px;                                  /* horizontal gap */
+    align-items: start;
+    justify-content: center;
+    margin-top: 20px;
+
+    /* scroll when viewport is small */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    /* scroll snapping for nicer mobile UX */
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+
+  /* Scrollbar styling (optional, WebKit) */
+  .section-items::-webkit-scrollbar { height: 8px; }
+  .section-items::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.12);
+    border-radius: 8px;
+  }
+
+  /* Item style - fluid */
+  .item {
+    position: relative;
+    width: 100%;              /* full width of the grid column */
+    max-width: 350px;         /* prevents items from getting too wide on very large screens */
+    aspect-ratio: 350 / 280;  /* stable height relative to width */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(16,24,40,0.08);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: #fff;
+
+    /* for scroll snap */
+    scroll-snap-align: start;
+  }
+
+  .item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(16,24,40,0.12);
+  }
+
+  /* Image styles */
+  .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* Title on top of the image */
+  .item .item-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 700;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 8px;
+    text-align: center;
+  }
+
+  /* Info (hidden initially) */
+  .item-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.94);
+    color: #000;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.28s ease;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item-info p {
+    font-size: 0.95rem;
+    margin: 6px 0 0 0;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .item-info .btn {
+    align-self: flex-end;
+    margin-top: 10px;
+    padding: 6px 14px;
+    background: #0b1220;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    transition: background 0.2s ease;
+  }
+
+  .item-info .btn:hover { background: #161b26; }
+
+  /* Hover reveal */
+  .item:hover img { opacity: 0.45; }
+  .item:hover .item-info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- Responsive adjustments ---------- */
+
+  /* Very wide screens: show four items as a normal grid (no scrolling) */
+  @media (min-width: 1400px) {
+    .section-container {
+      padding: 30px;
+    }
+    
+    .section-header h1 {
+      font-size: 2.5rem;
+    }
+    
+    .section-header p {
+      font-size: 1.1rem;
+    }
+    
+    .section-items {
+      grid-auto-columns: minmax(250px, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-flow: row;    /* revert to normal grid flow */
+      overflow-x: visible;
+      scroll-snap-type: none;
+      gap: 45px;
+    }
+    
+    .item { 
+      max-width: 350px; 
+      aspect-ratio: 350 / 300;
+    }
+    
+    .item .item-title { 
+      font-size: 1.25rem; 
+      padding: 10px;
+    }
+    
+    .item-info p { 
+      font-size: 1rem; 
+      line-height: 1.4;
+    }
+  }
+
+  /* Large Desktop */
+  @media (max-width: 1399px) and (min-width: 1200px) {
+    .section-items {
+      grid-auto-columns: minmax(280px, 1fr);
+      gap: 35px;
+    }
+    
+    .item {
+      max-width: 320px;
+      aspect-ratio: 320 / 270;
+    }
+  }
+
+  /* Medium screens / tablets: two columns (optional) */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .section-container {
+      padding: 25px;
+    }
+    
+    .section-header h1 {
+      font-size: 1.8rem;
+    }
+    
+    .section-items {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(2, 1fr);
+      overflow-x: visible;
+      gap: 30px;
+      scroll-snap-type: none;
+    }
+    
+    .item {
+      max-width: 300px;
+      aspect-ratio: 300 / 250;
+      margin: 0 auto;
+    }
+    
+    .item .item-title { 
+      font-size: 1.05rem; 
+    }
+    
+    .item-info p { 
+      font-size: 0.9rem; 
+      margin: 5px 0 0 0;
+    }
+    
+    .item-info .btn {
+      padding: 7px 15px;
+      font-size: 0.83rem;
+    }
+  }
+
+  /* Tablet Portrait */
+  @media (max-width: 768px) {
+    .section-container {
+      padding: 15px;
+    }
+    
+    .section-header {
+      margin-bottom: 20px;
+    }
+    
+    .section-header h1 {
+      font-size: 1.6rem;
+    }
+    
+    .section-header p {
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+    
+    .section-items {
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(220px, 80vw);
+      gap: 20px;
+      padding-left: 12px;
+      padding-right: 12px;
+      margin-top: 15px;
+      scroll-snap-type: x mandatory;
+    }
+    
+    .item {
+      max-width: 80vw;
+      aspect-ratio: 270 / 220;
+    }
+    
+    .item .item-title { 
+      font-size: 1.02rem; 
+      padding: 7px;
+    }
+    
+    .item-info p { 
+      font-size: 0.85rem; 
+      margin: 5px 0 0 0;
+    }
+    
+    .item-info .btn {
+      padding: 6px 13px;
+      font-size: 0.8rem;
+    }
+    
+    /* Reduce hover effects on touch devices */
+    @media (hover: none) {
+      .item:hover {
+        transform: none;
+      }
+      
+      .item:hover img {
+        opacity: 1;
+      }
+      
+      .item:hover .item-info {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  /* Mobile Landscape */
+  @media (max-width: 576px) {
+    .section-container {
+      padding: 12px;
+    }
+    
+    .section-header h1 {
+      font-size: 1.4rem;
+    }
+    
+    .section-header p {
+      font-size: 0.9rem;
+    }
+    
+    .section-items {
+      grid-auto-columns: minmax(200px, 85vw);
+      gap: 18px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    
+    .item {
+      max-width: 85vw;
+      aspect-ratio: 280 / 200;
+    }
+    
+    .item .item-title { 
+      font-size: 1rem; 
+      padding: 6px;
+    }
+    
+    .item-info {
+      padding: 12px;
+    }
+    
+    .item-info p { 
+      font-size: 0.82rem; 
+      margin: 4px 0 0 0;
+      line-height: 1.3;
+    }
+    
+    .item-info .btn {
+      padding: 5px 12px;
+      font-size: 0.78rem;
+      margin-top: 8px;
+    }
+  }
+
+  /* Very small phones */
+  @media (max-width: 480px) {
+    .section-container {
+      padding: 10px;
+    }
+    
+    .section-header h1 {
+      font-size: 1.3rem;
+    }
+    
+    .section-header p {
+      font-size: 0.85rem;
+    }
+    
+    .section-items {
+      grid-auto-columns: minmax(180px, 90vw);
+      gap: 16px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    
+    .item {
+      max-width: 90vw;
+      aspect-ratio: 300 / 200;
+      border-radius: 6px;
+    }
+    
+    .item .item-title { 
+      font-size: 0.95rem; 
+      padding: 5px;
+    }
+    
+    .item-info {
+      padding: 10px;
+    }
+    
+    .item-info p { 
+      font-size: 0.78rem; 
+      margin: 3px 0 0 0;
+      line-height: 1.2;
+    }
+    
+    .item-info .btn { 
+      padding: 5px 10px; 
+      font-size: 0.75rem;
+      margin-top: 6px;
+    }
+  }
+
+  /* Extra small devices (foldable phones, etc.) */
+  @media (max-width: 360px) {
+    .section-header h1 {
+      font-size: 1.2rem;
+    }
+    
+    .section-header p {
+      font-size: 0.8rem;
+    }
+    
+    .section-items {
+      grid-auto-columns: minmax(160px, 95vw);
+      gap: 14px;
+    }
+    
+    .item {
+      max-width: 95vw;
+      aspect-ratio: 280 / 190;
+    }
+    
+    .item .item-title { 
+      font-size: 0.9rem; 
+      padding: 4px;
+    }
+    
+    .item-info p { 
+      font-size: 0.75rem;
+    }
+    
+    .item-info .btn { 
+      padding: 4px 9px; 
+      font-size: 0.72rem;
+    }
+  }
+
+  /* Landscape orientation adjustments */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .section-items {
+      grid-auto-columns: minmax(180px, 45vw);
+    }
+    
+    .item {
+      aspect-ratio: 180 / 140;
+    }
+    
+    .item .item-title {
+      font-size: 0.9rem;
+      padding: 4px;
+    }
+  }
+
+  /* High DPI screens */
+  @media (min-resolution: 192dpi) {
+    .item img {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .section-container {
+      background: white;
+      color: black;
+      padding: 10px;
+    }
+    
+    .section-items {
+      display: block;
+      overflow-x: visible;
+    }
+    
+    .item {
+      break-inside: avoid;
+      margin-bottom: 20px;
+      max-width: 100%;
+      box-shadow: none;
+      border: 1px solid #ddd;
+    }
+    
+    .item img {
+      filter: grayscale(100%);
+    }
+    
+    .item-info {
+      position: static;
+      opacity: 1;
+      transform: none;
+      background: white;
+      color: black;
+    }
+    
+    .item-info .btn {
+      display: none;
+    }
+    
+    /* Remove hover effects for print */
+    .item:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }

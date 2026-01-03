@@ -1,0 +1,174 @@
+/* Basic styles for the navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: fixed;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 85%;
+    max-width: 1400px;
+    height: 70px;
+    z-index: 1000;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Transparent state (initial) */
+.navbar.transparent {
+    background: rgba(255, 255, 255, 0.534);
+    backdrop-filter: blur(5px);
+    box-shadow: none;
+}
+
+/* Solid state (when scrolled) */
+.navbar.solid {
+    background: linear-gradient(to right, #ffffff, #87ceeb);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar visibility on scroll */
+.navbar.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+/* Logo and text styling */
+.navbar-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 90px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.logo-text {
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Navbar Menu */
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 10px;
+}
+
+/* Navbar Menu Items */
+.navbar-menu li {
+    margin: 0 15px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Link styles */
+.navbar-menu li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    transition: color 0.3s, text-shadow 0.1s ease;
+}
+
+/* Hover effects */
+.navbar-menu li:hover {
+    transform: scale(1.1);
+}
+
+.navbar-menu li:hover a {
+    color: #670bb3;
+}
+
+/* -------------------- */
+/* 🔹 Responsive Navbar */
+/* -------------------- */
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 0;
+        top: 0;
+    }
+
+    /* Transparent state for mobile */
+    .navbar.transparent {
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(8px); /* Stronger blur on mobile */
+    }
+
+    /* Hide menu items by default */
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgb(194, 247, 248);
+        width: 100%;
+        text-align: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Show menu when active */
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-menu li {
+        margin: 15px 0;
+    }
+
+    /* Hamburger Menu Icon */
+    .navbar-menu-icon {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 2000;
+    }
+
+    .bar {
+        width: 30px;
+        height: 3px;
+        background: black;
+        margin: 3px 0;
+        transition: 0.3s ease-in-out;
+        border-radius: 5px;
+    }
+
+    /* Fix for Cross Icon */
+    .bar.open:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        transform-origin: center;
+    }
+
+    .bar.open:nth-child(2) {
+        opacity: 0;
+    }
+
+    .bar.open:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        transform-origin: center;
+    }
+}

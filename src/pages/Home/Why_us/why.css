@@ -1,0 +1,150 @@
+/* Why Choose Us Section Styling */
+.why-choose-us {
+  padding: 50px 30px;
+  text-align: center;
+  background-image: url("../../../components/Images/Background/whybg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Section Heading Styling */
+.section-heading {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #000000;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Reason Container Styling */
+.reasons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* Individual Reason Item Styling */
+.reason-item {
+  max-width: 450px;
+  flex: 1 1 calc(50% - 40px); /* Two items per row */
+  text-align: center;
+  color: #fff;
+}
+
+/* Reason Icon Styling */
+.reason-icon {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+/* Reason Item Text Styling */
+.reason-item p {
+  font-size: 1.3rem;
+  color: #000000;
+  line-height: 1.8;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+/* 🔹 Tablets & Smaller Desktops (1024px) */
+@media (max-width: 1024px) {
+  .why-choose-us {
+    padding: 40px 20px;
+  }
+
+  .section-heading {
+    font-size: 3rem;
+  }
+
+  .reasons-container {
+    gap: 30px;
+  }
+
+  .reason-item {
+    max-width: 400px;
+  }
+
+  .reason-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .reason-item p {
+    font-size: 1.2rem;
+  }
+}
+
+/* 🔹 Tablets (768px) - Two items per row */
+@media (max-width: 768px) {
+  .why-choose-us {
+    padding: 30px 15px;
+  }
+
+  .section-heading {
+    font-size: 2.5rem;
+  }
+
+  .reasons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 20px; /* Adjust spacing */
+  }
+
+  .reason-item {
+    flex: 1 1 calc(50% - 20px); /* Ensures two items per row */
+    max-width: 350px; /* Adjust width */
+  }
+
+  .reason-icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .reason-item p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+}
+
+/* 🔹 Small Mobile Devices (480px) - Stack items */
+@media (max-width: 480px) {
+  .why-choose-us {
+    padding: 20px 10px;
+  }
+
+  .section-heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .reasons-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .reason-item {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .reason-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .reason-item p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,214 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Section styling */
+.cards-section {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+/* Section header */
+.cards-header h1 {
+  font-size: 3rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.cards-header p {
+  font-size: 1.2rem;
+  font-family: 'Open Sans', sans-serif;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Cards container */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  justify-content: center;
+}
+
+/* Card styles */
+.card {
+  width: 100%;
+  height: 360px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease-in-out;
+  border-radius: 8px; /* Added to prevent content overflow at corners */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* Gradient overlay on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(46, 241, 248, 0.5), rgba(46, 241, 248, 0.5));
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Card image */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Card content - UPDATED TO KEEP TEXT INSIDE */
+.card .info {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease-in-out;
+  padding: 1.5rem;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.5);
+  width: calc(100% - 3rem); /* Ensures content stays within card */
+  margin: 1.5rem;
+  border-radius: 4px; /* Matches card rounding */
+  box-sizing: border-box;
+  max-height: 80%; /* Prevents overflow at bottom */
+  overflow: hidden; /* Hides any potential overflow */
+}
+
+.card:hover .info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title and description - UPDATED TO STAY INSIDE */
+.card .info h1 {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 1rem;
+  color: #fff;
+  width: 100%;
+  padding: 0;
+  line-height: 1.3;
+  word-wrap: break-word; /* Prevents horizontal overflow */
+}
+
+.card .info p {
+  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  word-spacing: normal;
+  hyphens: auto; /* Better text breaking */
+  overflow-wrap: break-word; /* Ensures text stays within bounds */
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limits to 4 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Button - UPDATED POSITION */
+.card .btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  transition: box-shadow 0.4s ease-in-out, background-color 0.3s ease;
+  margin-top: auto; /* Pushes button to bottom */
+  width: fit-content;
+  border-radius: 4px;
+}
+
+.card .btn:hover {
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+  background-color: #eee;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .card .info {
+    padding: 1.2rem;
+    margin: 1.2rem;
+    width: calc(100% - 2.4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+  }
+
+  .card {
+    height: auto;
+    min-height: 360px;
+  }
+
+  .card .info {
+    padding: 1rem;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+
+  .card .info h1 {
+    font-size: 1.3rem;
+  }
+
+  .card .info p {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 3; /* Show fewer lines on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-header h1 {
+    font-size: 2rem;
+  }
+  
+  .cards-header p {
+    font-size: 1rem;
+  }
+  
+  .card .info {
+    padding: 0.8rem;
+    margin: 0.8rem;
+    width: calc(100% - 1.6rem);
+  }
+}

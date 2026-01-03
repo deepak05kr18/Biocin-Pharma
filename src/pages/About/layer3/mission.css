@@ -1,0 +1,102 @@
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.site-container {
+  display: grid;
+  place-items: center;
+
+  min-height: 100vh;
+  padding: 1.5em;
+
+  /* Background specifically for this section */
+  background: 
+    url(https://i.ibb.co/Qjt7TJn/milad-fakurian-E8-Ufcyxz514-unsplash-1.jpg)
+    center / cover no-repeat fixed;
+}
+
+.carddd {
+  width: 90%;
+  height: auto; /* Adjusts height to content */
+  padding: 35px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center aligns children horizontally */
+  justify-content: flex-start; /* Ensures content starts at the top */
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(15px);
+  text-align: center; /* Centers text inside the elements */
+}
+
+.carddd h1 {
+  margin: 0 0 20px; /* Adds space below the heading */
+  font-size: 3rem; /* Adjusts size of the heading */
+}
+
+.carddd p {
+  font-size: 1.6rem; /* Adjusts size of the paragraph text */
+  line-height: 1.6; /* Improves readability */
+}
+
+/* Responsive Design */
+
+/* Tablets and smaller desktops */
+@media (max-width: 1024px) {
+  .carddd {
+    width: 80%;
+    padding: 25px;
+  }
+
+  .carddd h1 {
+    font-size: 2.5rem;
+  }
+
+  .carddd p {
+    font-size: 1.4rem;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .site-container {
+    padding: 1em;
+  }
+
+  .carddd {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .carddd h1 {
+    font-size: 2rem;
+  }
+
+  .carddd p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+}
+
+/* Smaller mobile devices */
+@media (max-width: 480px) {
+  .carddd {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .carddd h1 {
+    font-size: 1.8rem;
+  }
+
+  .carddd p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
