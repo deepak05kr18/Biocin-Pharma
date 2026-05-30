@@ -7,20 +7,26 @@ import {
 } from 'lucide-react';
 
 // ── Import your product images (adjust paths as needed) ──────────────────────
-import calbocin        from '../../../components/Images/Products/New Images/Calbocin L.jpeg';
-import CalbocinK27     from '../../../components/Images/Products/Calbocin.png';
-import DexorocinSyrup  from '../../../components/Images/Products/Dexorecin B12.png';
-import Dexorocin       from '../../../components/Images/Products/Dexorecin.png';
-import Flexocin        from '../../../components/Images/Products/Flexocin.png';
-import Omecin          from '../../../components/Images/Products/Omecin.png';
-import Fixocin         from '../../../components/Images/Products/Fixocin.png';
-import Zivocin         from '../../../components/Images/Products/zivocin.png';
-import Nutricin        from '../../../components/Images/Products/Nutricin.png';
-import NutricinL       from '../../../components/Images/Products/Nutricin L.png';
-import Amoclacin       from '../../../components/Images/Products/Amoxycilinn.png';
-import Respicin        from '../../../components/Images/Products/Respicin.png';
-import Telsucin        from '../../../components/Images/Products/Telsucin.png';
-import Montycin        from '../../../components/Images/Products/Calbocin.png';
+import calbocin        from '../../../components/Images/Products/webp_products/Calbocin_L.webp';
+import CalbocinK27     from '../../../components/Images/Products/webp_products/Calbocin_L.webp';
+import DexorocinSyrup  from '../../../components/Images/Products/webp_products/Dexorocin.webp';
+import Dexorocin       from '../../../components/Images/Products/webp_products/Dexorocin_Tablet.webp';
+import Flexocin        from '../../../components/Images/Products/webp_products/Flexocin_Tablets.webp';
+import Omecin          from '../../../components/Images/Products/webp_products/Omecin.webp';
+import Fixocin         from '../../../components/Images/Products/webp_products/Fixocin.webp';
+import Zivocin         from '../../../components/Images/Products/webp_products/Zivocin_t.webp';
+import Nutricin        from '../../../components/Images/Products/webp_products/Nutricin_T.webp';
+import NutricinL       from '../../../components/Images/Products/webp_products/Nutricin_Liquid.webp';
+import Amoclacin       from '../../../components/Images/Products/webp_products/Amociacin__2_.webp';
+import Respicin        from '../../../components/Images/Products/webp_products/Respicin_L.webp';
+import Telsucin        from '../../../components/Images/Products/webp_products/Telsucin.webp';
+import Montycin        from '../../../components/Images/Products/webp_products/Montycin.webp';
+import Panzocin        from '../../../components/Images/Products/webp_products/Panzocin.webp';
+import NutricinD3         from '../../../components/Images/Products/webp_products/Nutricin.webp'; 
+import Amoclacin625     from '../../../components/Images/Products/webp_products/Amoclocin_T.webp';
+import Amoclacin457     from '../../../components/Images/Products/webp_products/Amociacin.webp';
+import Glytracin       from '../../../components/Images/Products/webp_products/GLytracin.webp';
+import Meftacin       from '../../../components/Images/Products/webp_products/Meftacin.webp';
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 const PRODUCTS_DATA = [
@@ -86,7 +92,7 @@ const PRODUCTS_DATA = [
     composition: 'PANTOPRAZOLE 40 MG + DOMPERIDONE 10 MG',
     category: 'Gastrointestinal',
     description: 'Combination therapy for acid reflux and GERD with antiemetic action',
-    image: null,
+    image: Panzocin,
   },
   {
     id: 9,
@@ -110,7 +116,7 @@ const PRODUCTS_DATA = [
     composition: 'VITAMIN D3 60,000 IU (CHOLECALCIFEROL)',
     category: 'Vitamin Supplement',
     description: 'High dose vitamin D3 for rapid correction of vitamin D deficiency',
-    image: null,
+    image: NutricinD3,
   },
   {
     id: 12,
@@ -126,7 +132,7 @@ const PRODUCTS_DATA = [
     composition: 'AMOXICILLIN 500 MG + CLAVULANIC ACID 125 MG',
     category: 'Antibiotic',
     description: 'Broad spectrum antibiotic with beta-lactamase inhibitor',
-    image: null,
+    image: Amoclacin625,
   },
   {
     id: 14,
@@ -142,7 +148,7 @@ const PRODUCTS_DATA = [
     composition: 'AMOXICILLIN 400 MG + CLAVULANIC ACID 57 MG / 5ML',
     category: 'Pediatric Antibiotic',
     description: 'High strength antibiotic suspension for children',
-    image: null,
+    image: Amoclacin457,
   },
   {
     id: 16,
@@ -150,7 +156,7 @@ const PRODUCTS_DATA = [
     composition: 'METFORMIN 500 MG + GLIMEPIRIDE 2 MG',
     category: 'Anti-diabetic',
     description: 'Combination therapy for Type 2 diabetes mellitus',
-    image: null,
+    image: Glytracin,
   },
   {
     id: 17,
@@ -198,7 +204,7 @@ const PRODUCTS_DATA = [
     composition: 'MEFENAMIC ACID 50 MG + PARACETAMOL 125 MG',
     category: 'Pediatric Analgesic',
     description: 'Pediatric analgesic syrup for fever and pain relief',
-    image: null,
+    image: Meftacin,
   },
 ];
 
