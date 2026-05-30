@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './Layer2.css';
 import {
   Search, Filter, ChevronDown, ChevronUp, Pill, Syringe,
-  Droplets, Eye, Heart, Bone, Brain, Shield, Activity,
+  Droplets, Eye, Heart, Bone, Shield, Activity,
   ChevronLeft, ChevronRight
 } from 'lucide-react';
 

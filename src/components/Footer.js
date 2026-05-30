@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaYoutube, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCode } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaCode } from "react-icons/fa";
 import "../styles/Footer.css"; 
 import img1 from '../components/Images/Logo/Biocin_logo.png';
 
@@ -75,11 +75,7 @@ const Footer = () => {
 
           <div className="footer-column follow-us">
             <h2>Follow Us</h2>
-            <div className="social-icons">
-              <a href="" target="_blank" rel="noopener noreferrer" className="youtube"><FaYoutube /></a>
-              <a href="" target="_blank" rel="noopener noreferrer" className="linkedin"><FaLinkedin /></a>
-              <a href="" target="_blank" rel="noopener noreferrer" className="instagram"><FaInstagram /></a>
-            </div>
+            
           </div>
         </div>
 
