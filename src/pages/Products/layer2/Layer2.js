@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Layer2.css';
 import {
   Search, Filter, ChevronDown, ChevronUp, Pill, Syringe,
-  Droplets, Eye, Heart, Bone, Shield, Activity,
-  ChevronLeft, ChevronRight
+  Droplets, Eye, Heart, Bone, Shield, Activity
 } from 'lucide-react';
 
 // ── Import your product images (adjust paths as needed) ──────────────────────
@@ -18,7 +17,9 @@ import Zivocin         from '../../../components/Images/Products/webp_products/Z
 import Nutricin        from '../../../components/Images/Products/webp_products/Nutricin_T.webp';
 import NutricinL       from '../../../components/Images/Products/webp_products/Nutricin_Liquid.webp';
 import Amoclacin       from '../../../components/Images/Products/webp_products/Amociacin__2_.webp';
-import Respicin        from '../../../components/Images/Products/webp_products/Respicin_L.webp';
+import RespicinActi       from '../../../components/Images/Products/webp_products/Respicin Acti.jpeg';
+import RespicinDx        from '../../../components/Images/Products/webp_products/Respicin Dx.jpeg';
+import RespicinLs        from '../../../components/Images/Products/webp_products/Respicin LS.jpeg';
 import Telsucin        from '../../../components/Images/Products/webp_products/Telsucin.webp';
 import Montycin        from '../../../components/Images/Products/webp_products/Montycin.webp';
 import Panzocin        from '../../../components/Images/Products/webp_products/Panzocin.webp';
@@ -41,7 +42,7 @@ const PRODUCTS_DATA = [
   {
     id: 2,
     name: 'Calbocin® K27',
-    composition: 'CALCITRIOL 25 MCG + CALCIUM CITRATE 1000 MG + METHYLCOBALAMIN 1500 MCG + VITAMIN K2 7.5 MCG + FOLIC ACID 1.5 MG + ZINC 7.5 MG',
+    composition: 'CALCITRIOL IP  0.25 MCG +CALCIUM CITRATE USP 1000  MG  +METHYLCOBALAMIN IP 1500 MCG+ VITAMIN -K27 50 MCG  +FOLIC ACID IP 1.5 MG + ZINC SULPHATE MONOHYDERATE  7.5 MG',
     category: 'Bone Health',
     description: 'Advanced bone health formula with active vitamin D3, calcium, and essential nutrients',
     image: CalbocinK27,
@@ -49,7 +50,7 @@ const PRODUCTS_DATA = [
   {
     id: 3,
     name: 'Dexorocin® B12 Syrup',
-    composition: 'FERRIC AMMONIUM CITRATE 150 MG + CYANOCOBALAMIN 7.5 MG + FOLIC ACID 0.5 MG / 5ML',
+    composition: 'FERRIC AMMONIUM CITRATE  IP 160 MG +CYANOCOBALAMIN IP 7.5 MCG + FOLIC ACID IP 0.5 MG',
     category: 'Hematinic',
     description: 'Iron supplement with vitamin B12 and folic acid for anemia treatment',
     image: DexorocinSyrup,
@@ -65,7 +66,7 @@ const PRODUCTS_DATA = [
   {
     id: 5,
     name: 'Flexocin® SP Tablets',
-    composition: 'ACECLOFENAC 60 MG + PARACETAMOL 325 MG + SERRATIOPEPTIDASE 15 MG',
+    composition: 'ACECLOFENAC  100   MG +PARACETAMOL 325 MG + SERRATIOPEPTIDASE 15 MG',
     category: 'Analgesic & Anti-inflammatory',
     description: 'Triple action pain relief for musculoskeletal pain and inflammation',
     image: Flexocin,
@@ -97,7 +98,7 @@ const PRODUCTS_DATA = [
   {
     id: 9,
     name: 'Zivocin™ Tablets',
-    composition: 'ZINC 50 MG + BIOTIN 10 MG + VITAMIN C 500 MG + ANTIOXIDANTS',
+    composition: 'ZINC 17 MG +BIOTIN 40 MCG+ VITAMIN C 500 MG + ANTIOXIDANT',
     category: 'Immunity Booster',
     description: 'Complete immunity and skin health supplement with antioxidants',
     image: Zivocin,
@@ -161,10 +162,10 @@ const PRODUCTS_DATA = [
   {
     id: 17,
     name: 'Respicin-Acti Cough Syrup',
-    composition: 'AMBROXOL 30 MG + GUAIPHENESIN 50 MG + TERBUTALINE 1.25 MG / 5ML',
+    composition: 'AMBROXOL 15 MG+ GUAIPHENESIN 50 MG +TERBUTALINE 1.25 MG/5ML',
     category: 'Respiratory',
     description: 'Triple action cough syrup for productive cough and bronchospasm',
-    image: Respicin,
+    image: RespicinActi,
   },
   {
     id: 18,
@@ -172,7 +173,7 @@ const PRODUCTS_DATA = [
     composition: 'DEXTROMETHORPHAN 10 MG + CHLORPHENIRAMINE 2 MG + PHENYLEPHRINE 5 MG / 5ML',
     category: 'Respiratory',
     description: 'Dry cough syrup with decongestant and antihistamine',
-    image: Respicin,
+    image: RespicinDx,
   },
   {
     id: 19,
@@ -180,7 +181,7 @@ const PRODUCTS_DATA = [
     composition: 'LEVOSALBUTAMOL 1 MG + AMBROXOL 30 MG + GUAIPHENESIN 50 MG / 5ML',
     category: 'Respiratory',
     description: 'Bronchodilator with mucolytic for asthma and bronchitis',
-    image: Respicin,
+    image: RespicinLs,
   },
   {
     id: 20,
@@ -253,134 +254,12 @@ const getDosageForm = (name) => {
   return 'Various Forms';
 };
 
-// ── Carousel radius calculation ───────────────────────────────────────────────
-const CARD_W = 200;
-const getRadius = (n) => Math.round(CARD_W / (2 * Math.tan(Math.PI / n)));
-
 // ── Placeholder icon component ────────────────────────────────────────────────
 const PlaceholderIcon = ({ category, size = 28 }) => {
   const Icon = getCategoryIcon(category);
   return (
     <div className="image-placeholder">
       <Icon size={size} />
-    </div>
-  );
-};
-
-// ═════════════════════════════════════════════════════════════════════════════
-// 3-D CAROUSEL
-// ═════════════════════════════════════════════════════════════════════════════
-const Carousel3D = ({ products, onSelectProduct }) => {
-  const [currentIdx, setCurrentIdx] = useState(0);
-  const autoRef = useRef(null);
-  const n = products.length;
-  const angleStep = 360 / n;
-  const radius = getRadius(n);
-
-  const goTo = useCallback((idx) => {
-    setCurrentIdx(((idx % n) + n) % n);
-    onSelectProduct && onSelectProduct(products[((idx % n) + n) % n]);
-  }, [n, products, onSelectProduct]);
-
-  const prev = () => { goTo(currentIdx - 1); resetAuto(); };
-  const next = () => { goTo(currentIdx + 1); resetAuto(); };
-
-  const resetAuto = useCallback(() => {
-    clearInterval(autoRef.current);
-    autoRef.current = setInterval(() => setCurrentIdx(i => (i + 1) % n), 3500);
-  }, [n]);
-
-  useEffect(() => {
-    resetAuto();
-    return () => clearInterval(autoRef.current);
-  }, [resetAuto]);
-
-  useEffect(() => {
-    onSelectProduct && onSelectProduct(products[currentIdx]);
-  }, [currentIdx]); // eslint-disable-line
-
-  return (
-    <div className="carousel-wrapper">
-      {/* 3-D scene */}
-      <div className="carousel-scene">
-        <div
-          className="carousel-3d"
-          style={{ transform: `rotateY(${-currentIdx * angleStep}deg)` }}
-        >
-          {products.map((p, i) => {
-            const col = getCategoryColor(p.category);
-            const angle = i * angleStep;
-            const isActive = i === currentIdx;
-            return (
-              <div
-                key={p.id}
-                className={`carousel-card ${isActive ? 'carousel-card--active' : ''}`}
-                style={{
-                  transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
-                  borderColor: isActive ? col : undefined,
-                }}
-                onClick={() => { goTo(i); clearInterval(autoRef.current); resetAuto(); }}
-              >
-                {/* image or icon */}
-                <div className="carousel-card__img-wrap" style={{ background: `${col}18` }}>
-                  {p.image
-                    ? <img src={p.image} alt={p.name} className="carousel-card__img" />
-                    : <PlaceholderIcon category={p.category} size={36} />
-                  }
-                </div>
-
-                <div className="carousel-card__name">{p.name}</div>
-                <div className="carousel-card__cat">{p.category}</div>
-                <div className="carousel-card__comp">{p.composition}</div>
-
-                <span
-                  className="carousel-card__badge"
-                  style={{ background: `${col}22`, color: col, border: `1px solid ${col}55` }}
-                >
-                  {p.category.split(' ')[0]}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="carousel-nav">
-        <button className="carousel-nav__btn" onClick={prev} aria-label="Previous">
-          <ChevronLeft size={20} />
-        </button>
-
-        <div className="carousel-nav__dots">
-          {products.map((_, i) => (
-            <button
-              key={i}
-              className={`carousel-dot ${i === currentIdx ? 'carousel-dot--active' : ''}`}
-              onClick={() => { goTo(i); resetAuto(); }}
-              aria-label={`Go to product ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        <button className="carousel-nav__btn" onClick={next} aria-label="Next">
-          <ChevronRight size={20} />
-        </button>
-      </div>
-    </div>
-  );
-};
-
-// ═════════════════════════════════════════════════════════════════════════════
-// ACTIVE PRODUCT INFO STRIP
-// ═════════════════════════════════════════════════════════════════════════════
-const ActiveProductInfo = ({ product }) => {
-  if (!product) return null;
-  const col = getCategoryColor(product.category);
-  return (
-    <div className="active-product-info" style={{ borderColor: col }}>
-      <div className="active-product-info__name" style={{ color: col }}>{product.name}</div>
-      <div className="active-product-info__desc">{product.description}</div>
-      <div className="active-product-info__comp">{product.composition}</div>
     </div>
   );
 };
@@ -395,7 +274,6 @@ const Product = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
   const [expandedRow, setExpandedRow] = useState(null);
-  const [activeCarouselProduct, setActiveCarouselProduct] = useState(PRODUCTS_DATA[0]);
 
   const categories = ['All', ...new Set(products.map(p => p.category))];
 
@@ -440,15 +318,6 @@ const Product = () => {
           <p className="company-tagline">Panacea For Global Care</p>
         </div>
         <p className="product-subtitle">Browse our comprehensive pharmaceutical product portfolio</p>
-      </div>
-
-      {/* ── 3-D Carousel Section ── */}
-      <div className="carousel-section">
-        <Carousel3D
-          products={products}
-          onSelectProduct={setActiveCarouselProduct}
-        />
-        <ActiveProductInfo product={activeCarouselProduct} />
       </div>
 
       {/* ── Divider ── */}
